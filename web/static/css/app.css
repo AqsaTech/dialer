@@ -1,0 +1,16 @@
+body { background: #f4f6f5; }
+.navbar-brand { font-weight: 600; letter-spacing: -.01em; }
+.keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.keypad .key { font-size: 1.35rem; padding: .7rem 0; font-variant-numeric: tabular-nums; }
+.display { font-size: 1.5rem; letter-spacing: .04em; text-align: center; }
+.log-body { max-width: 28ch; overflow-wrap: anywhere; }
+.table-wrap { max-height: 28rem; overflow-y: auto; }
+.status-dot { display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; margin-right: .35rem; }
+.status-dot.on { background: #198754; }
+.status-dot.off { background: #adb5bd; }
+.ring { animation: ring 1s ease-in-out infinite; }
+@keyframes ring { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg); } 75% { transform: rotate(12deg); } }
+@media (prefers-reduced-motion: reduce) { .ring { animation: none; } }
+.auth-card { max-width: 26rem; margin: 8vh auto; }
+.toast-area { position: fixed; right: 1rem; bottom: 1rem; z-index: 1090; display: grid; gap: .5rem; }
+.key-box { word-break: break-all; font-family: ui-monospace, Consolas, monospace; }

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/app.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar bg-white border-bottom mb-4">
+    <div class="container">
+      <span class="navbar-brand">Admin</span>
+      <div class="d-flex gap-2">
+        <a href="/dashboard" class="btn btn-sm btn-outline-secondary">My dialer</a>
+        <button id="logoutBtn" class="btn btn-sm btn-outline-secondary">Sign out</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container pb-5">
+    <ul class="nav nav-tabs mb-4" role="tablist">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabUsers" type="button">Users</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabGateways" type="button">Gateway phones</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabNumbers" type="button">Numbers</button></li>
+    </ul>
+
+    <div class="tab-content">
+      <section class="tab-pane fade show active" id="tabUsers">
+        <form id="userForm" class="row g-2 mb-3">
+          <div class="col-md-3"><input id="uName" class="form-control" placeholder="Username" required aria-label="Username"></div>
+          <div class="col-md-3"><input id="uEmail" type="email" class="form-control" placeholder="Email" required aria-label="Email"></div>
+          <div class="col-md-3"><input id="uPass" type="password" class="form-control" placeholder="Password (10+ chars)" minlength="10" required aria-label="Password" autocomplete="new-password"></div>
+          <div class="col-md-1"><select id="uRole" class="form-select" aria-label="Role"><option value="user">User</option><option value="admin">Admin</option></select></div>
+          <div class="col-md-2"><button class="btn btn-primary w-100">Create user</button></div>
+        </form>
+        <table class="table align-middle"><thead><tr><th>Username</th><th>Email</th><th>Role</th><th>Status</th><th></th></tr></thead><tbody id="userRows"></tbody></table>
+      </section>
+
+      <section class="tab-pane fade" id="tabGateways">
+        <form id="gwForm" class="row g-2 mb-3">
+          <div class="col-md-6"><input id="gName" class="form-control" placeholder="Phone name, e.g. office-phone-1" minlength="3" required aria-label="Gateway name"></div>
+          <div class="col-md-3"><button class="btn btn-primary w-100">Add gateway phone</button></div>
+        </form>
+        <div id="keyBox" class="alert alert-warning d-none">
+          <p class="mb-1"><strong>Copy this key into the Android app now.</strong> It will not be shown again.</p>
+          <div id="keyValue" class="key-box"></div>
+        </div>
+        <table class="table align-middle"><thead><tr><th>Name</th><th>Connection</th><th>Last seen</th><th>Status</th><th></th></tr></thead><tbody id="gwRows"></tbody></table>
+      </section>
+
+      <section class="tab-pane fade" id="tabNumbers">
+        <form id="numForm" class="row g-2 mb-3">
+          <div class="col-md-3"><select id="nUser" class="form-select" aria-label="Tenant" required></select></div>
+          <div class="col-md-3"><select id="nGw" class="form-select" aria-label="Gateway phone" required></select></div>
+          <div class="col-md-2"><input id="nPhone" class="form-control" placeholder="+923001234567" required aria-label="SIM phone number"></div>
+          <div class="col-md-1"><select id="nSlot" class="form-select" aria-label="SIM slot"><option value="0">SIM 1</option><option value="1">SIM 2</option></select></div>
+          <div class="col-md-2"><input id="nLabel" class="form-control" placeholder="Label (optional)" aria-label="Label"></div>
+          <div class="col-md-1"><button class="btn btn-primary w-100">Assign</button></div>
+        </form>
+        <table class="table align-middle"><thead><tr><th>Number</th><th>Tenant</th><th>Gateway</th><th>Slot</th><th>Label</th><th>Status</th><th></th></tr></thead><tbody id="numRows"></tbody></table>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="/static/js/admin.js"></script>
+</body>
+</html>
